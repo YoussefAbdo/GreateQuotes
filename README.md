@@ -2,4 +2,4 @@
 
 Xamarin Forms Application which use Factory Pattern
 
-<img source="/ScreenShots/1.PNG"/>
+<img src="/ScreenShots/1.PNG"/>
