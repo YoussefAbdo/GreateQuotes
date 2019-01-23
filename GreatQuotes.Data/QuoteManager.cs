@@ -2,25 +2,40 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace GreatQuotes.Data
+namespace GreatQuotes
 {
     public class QuoteManager
     {
         static readonly Lazy<QuoteManager> instance = new Lazy<QuoteManager>(() => new QuoteManager());
         public static QuoteManager Instance { get { return instance.Value; } }
 
-        readonly IQuoteLoader repo;
+        readonly IQuoteLoader loader;
         public IList<GreatQuote> Quotes { get; private set; }
 
         private QuoteManager()
         {
-            repo = QuoteLoaderFactory.Create();
-            Quotes = new ObservableCollection<GreatQuote>(repo.Load());
+            loader = QuoteLoaderFactory.Create();
+            Quotes = new ObservableCollection<GreatQuote>(loader.Load());
+        }
+
+        public void SayQuote(GreatQuote quote)
+        {
+            if (quote == null)
+                throw new ArgumentNullException(nameof(quote));
+
+            ITextToSpeech tts = ServiceLocator.Instance.Resolve<ITextToSpeech>();
+
+            var text = quote.QuoteText;
+
+            if (!string.IsNullOrWhiteSpace(quote.Author))
+                text += $" by {quote.Author}";
+
+            tts.Speak(text);
         }
 
         public void Save()
         {
-            repo.Save(Quotes);
+            loader.Save(Quotes);
         }
     }
 }

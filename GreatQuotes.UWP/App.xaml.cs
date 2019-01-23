@@ -1,7 +1,4 @@
-﻿using GreatQuotes.Data;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Core;
@@ -16,8 +13,6 @@ namespace GreatQuotes.UWP
     /// </summary>
     sealed partial class App : Application
     {
-        private QuoteLoader quoteLoader = new QuoteLoader();
-
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -25,6 +20,7 @@ namespace GreatQuotes.UWP
         public App()
         {
             QuoteLoaderFactory.Create = () => new QuoteLoader();
+            ServiceLocator.Instance.Add<ITextToSpeech, TextToSpeechService>();
 
             this.InitializeComponent();
             this.Suspending += OnSuspending;

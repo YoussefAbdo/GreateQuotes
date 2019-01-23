@@ -1,7 +1,6 @@
 using System;
 
 using Foundation;
-using GreatQuotes.Data;
 using UIKit;
 
 namespace GreatQuotes
@@ -15,7 +14,7 @@ namespace GreatQuotes
 		void AddNewItem(object sender, EventArgs args)
 		{
 			var quote = new GreatQuote();
-            QuoteManager.Instance.Quotes.Insert(0, quote);
+			QuoteManager.Instance.Quotes.Insert(0, quote);
 
 			using (var indexPath = NSIndexPath.FromRowSection(0, 0)) {
 				TableView.InsertRows(new [] { indexPath }, UITableViewRowAnimation.Automatic);

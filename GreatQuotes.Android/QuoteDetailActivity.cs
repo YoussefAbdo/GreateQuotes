@@ -3,7 +3,6 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using Android.Content;
-using GreatQuotes.Data;
 
 namespace GreatQuotes
 {
@@ -14,19 +13,32 @@ namespace GreatQuotes
 		TextView quoteText;
 		TextView authorText;
 
-		protected override void OnCreate(Bundle bundle)
-		{
-			base.OnCreate(bundle);
+	    protected override void OnCreate(Bundle bundle)
+	    {
+	        base.OnCreate(bundle);
 
-			quoteIndex = Intent.Extras.GetInt("quoteIndex");
+	        quoteIndex = Intent.Extras.GetInt("quoteIndex");
 
-			SetContentView(Resource.Layout.Detail);
+	        SetContentView(Resource.Layout.Detail);
 
-			quoteText = FindViewById<TextView>(Resource.Id.quoteText);
-			authorText = FindViewById<TextView>(Resource.Id.authorText);
-		}
+	        quoteText = FindViewById<TextView>(Resource.Id.quoteText);
+	        authorText = FindViewById<TextView>(Resource.Id.authorText);
 
-		protected override void OnResume()
+            quoteText.Touch += QuoteText_Touch;
+	    }
+
+        protected override void OnDestroy()
+        {
+            quoteText.Touch -= QuoteText_Touch;
+        }
+
+        void QuoteText_Touch(object sender, View.TouchEventArgs e)
+        {
+            var qm = QuoteManager.Instance;
+            qm.SayQuote(qm.Quotes[quoteIndex]);
+        }
+
+        protected override void OnResume()
 		{
 			base.OnResume();
 
@@ -57,7 +69,7 @@ namespace GreatQuotes
 					StartActivity(intent);
 					break;
 				case Resource.Id.delete_quote:
-					QuoteManager.Instance.Quotes.RemoveAt(quoteIndex);
+                    QuoteManager.Instance.Quotes.RemoveAt(quoteIndex);
 					StartActivity(typeof(QuoteListActivity));
 					Finish();
 					break;

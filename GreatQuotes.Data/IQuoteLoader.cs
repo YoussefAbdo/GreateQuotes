@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace GreatQuotes.Data
+namespace GreatQuotes
 {
-    public interface IQuoteLoader
-    {
-        IEnumerable<GreatQuote> Load();
-        void Save(IEnumerable<GreatQuote> quotes);
-
-    }
+	public interface IQuoteLoader
+	{
+	    IEnumerable<GreatQuote> Load();
+	    void Save(IEnumerable<GreatQuote> quotes);
+	}
 }

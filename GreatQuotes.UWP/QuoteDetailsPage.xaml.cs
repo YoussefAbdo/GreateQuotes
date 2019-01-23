@@ -1,5 +1,6 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -15,7 +16,6 @@ namespace GreatQuotes.UWP
         {
             this.InitializeComponent();
         }
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -25,6 +25,11 @@ namespace GreatQuotes.UWP
         private void OnEditQuote(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof (EditQuotePage), this.DataContext);
+        }
+
+        private void OnSayQuote(object sender, PointerRoutedEventArgs e)
+        {
+            QuoteManager.Instance.SayQuote((GreatQuote)DataContext);
         }
     }
 }

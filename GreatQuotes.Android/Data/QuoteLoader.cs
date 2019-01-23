@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
 using System.Linq;
-using GreatQuotes.Data;
 
 namespace GreatQuotes
 {
 	public class QuoteLoader : IQuoteLoader
-    {
+	{
 		const string FileName = "quotes.xml";
 
 		public IEnumerable<GreatQuote> Load()

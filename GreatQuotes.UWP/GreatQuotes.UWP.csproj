@@ -106,6 +106,7 @@
     <Compile Include="QuoteDetailsPage.xaml.cs">
       <DependentUpon>QuoteDetailsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TextToSpeechService.Win.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -144,7 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GreatQuotes.Data\GreatQuotes.Data.csproj">
-      <Project>{92ad9d4b-bb8e-46b5-9b72-d3af4ef495a0}</Project>
+      <Project>{329d04d2-ccde-4f3d-854f-43fb1f4e5b50}</Project>
       <Name>GreatQuotes.Data</Name>
     </ProjectReference>
   </ItemGroup>

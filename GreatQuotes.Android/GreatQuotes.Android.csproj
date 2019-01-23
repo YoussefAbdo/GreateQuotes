@@ -12,8 +12,9 @@
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidApplication>True</AndroidApplication>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AssemblyName>GreatQuotes.Android</AssemblyName>
-    <TargetFrameworkVersion>v4.3</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -52,13 +53,12 @@
     <Compile Include="EditQuoteActivity.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Data\QuoteLoader.cs" />
+    <Compile Include="TextToSpeechService.Android.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <None Include="Properties\AndroidManifest.xml">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -89,9 +89,10 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_new.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\GreatQuotes.Data\GreatQuotes.Data.csproj">
-      <Project>{92ad9d4b-bb8e-46b5-9b72-d3af4ef495a0}</Project>
+      <Project>{329d04d2-ccde-4f3d-854f-43fb1f4e5b50}</Project>
       <Name>GreatQuotes.Data</Name>
     </ProjectReference>
   </ItemGroup>

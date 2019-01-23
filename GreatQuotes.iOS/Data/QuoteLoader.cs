@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
 using System.Linq;
-using GreatQuotes.Data;
 
 namespace GreatQuotes
 {
